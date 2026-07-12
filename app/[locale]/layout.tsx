@@ -1,7 +1,7 @@
 import { Metadata } from "next";
 import { getSharedMetadata } from "../helpers/global/getSharedMetadata";
 import { getTranslations } from "../helpers/global/getTranslations";
-import { Geist, Geist_Mono } from "next/font/google";
+import { Inter, JetBrains_Mono } from "next/font/google";
 import { ReactNode } from "react";
 import { ParamsLocaleType } from "../hooks/global/useLocale";
 
@@ -10,13 +10,13 @@ interface MainLayoutProps {
   params: ParamsLocaleType;
 }
 
-const geistSans = Geist({
-  variable: "--font-geist-sans",
+const inter = Inter({
+  variable: "--font-inter",
   subsets: ["latin"],
 });
 
-const geistMono = Geist_Mono({
-  variable: "--font-geist-mono",
+const jetBrainsMono = JetBrains_Mono({
+  variable: "--font-jetbrains-mono",
   subsets: ["latin"],
 });
 
@@ -41,10 +41,11 @@ export default async function MainLayout({
   params,
 }: MainLayoutProps) {
   const { locale } = await params;
+
   return (
     <html
       lang={locale ?? "en"}
-      className={`${geistSans.variable} ${geistMono.variable} h-full antialiased`}
+      className={`${inter.variable} ${jetBrainsMono.variable} h-full antialiased`}
     >
       <body className="min-h-full flex flex-col">{children}</body>
     </html>
