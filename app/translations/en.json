@@ -1,1 +1,25 @@
-{}
+{
+  "Login": {
+    "sysAuthDaemon": "SYS_AUTH_DAEMON",
+    "systemId": "ID: SV-882-QX-9",
+    "consoleLogPrimary": "Console_Log_Primary",
+    "geomPrimitive": "GEOM_PRIMITIVE_01",
+    "archivingStatus": "Archiving_Status",
+    "syncLoad": "Sync_Load",
+    "entropyPool": "Entropy_Pool",
+    "accessVault": "Access_Vault",
+    "accessVaultDescription": "Enter your credentials to synchronize local snippets.",
+    "identityEmail": "Identity_Email",
+    "emailPlaceholder": "developer@snippetvault.core",
+    "accessKey": "Access_Key",
+    "keyRecovery": "Key_Recovery?",
+    "passwordPlaceholder": "••••••••••••",
+    "persistSession": "Persist_Session",
+    "initializeAuth": "Initialize_Auth",
+    "secondaryMethods": "Secondary_Methods",
+    "signInWithGithub": "Sign in with GitHub",
+    "signInWithGoogle": "Sign in with Google",
+    "securityProtocol": "Security_Protocol",
+    "createAccount": "Create_Account"
+  }
+}

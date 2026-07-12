@@ -4,6 +4,8 @@ import { getTranslations } from "../helpers/global/getTranslations";
 import { Inter, JetBrains_Mono } from "next/font/google";
 import { ReactNode } from "react";
 import { ParamsLocaleType } from "../hooks/global/useLocale";
+import Navbar from "../components/website/Navbar";
+import Footer from "../components/website/Footer";
 
 interface MainLayoutProps {
   children: ReactNode;
@@ -20,21 +22,21 @@ const jetBrainsMono = JetBrains_Mono({
   subsets: ["latin"],
 });
 
-export async function generateMetadata({
-  params,
-}: {
-  params: ParamsLocaleType;
-}): Promise<Metadata> {
-  const { locale } = await params;
-  const t = getTranslations(locale, "layoutMeta");
-  const sharedMetaData = getSharedMetadata(locale, t.title, t.description);
+// export async function generateMetadata({
+//   params,
+// }: {
+//   params: ParamsLocaleType;
+// }): Promise<Metadata> {
+//   const { locale } = await params;
+//   const t = getTranslations(locale, "layoutMeta");
+//   const sharedMetaData = getSharedMetadata(locale, t.title, t.description);
 
-  return {
-    title: t.title,
-    description: t.description,
-    ...sharedMetaData,
-  };
-}
+//   return {
+//     title: t.title,
+//     description: t.description,
+//     ...sharedMetaData,
+//   };
+// }
 
 export default async function MainLayout({
   children,
@@ -47,7 +49,11 @@ export default async function MainLayout({
       lang={locale ?? "en"}
       className={`${inter.variable} ${jetBrainsMono.variable} h-full antialiased`}
     >
-      <body className="min-h-full flex flex-col">{children}</body>
+      <body className="min-h-full flex flex-col">
+        <Navbar />
+        {children}
+        <Footer />
+      </body>
     </html>
   );
 }

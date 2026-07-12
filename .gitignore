@@ -43,4 +43,8 @@ next-env.d.ts
 
 /screens
 
-/.mimocode
+/.*
+
+!.gitignore
+!.gitattributes
+!.editorconfig

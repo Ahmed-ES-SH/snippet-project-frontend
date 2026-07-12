@@ -153,6 +153,15 @@ app/helpers/<domain>/<feature>/
 - `useClickOutside(ref, callback)` — Click outside detection
 - `useDebounce(value, delay)` — Debounce value
 
+### UI Components (`app/components/UI/`)
+
+- `AuthFooter` — Row of centered footer links with hover color transition, used on auth pages.
+- `Checkbox` — Styled checkbox with associated label, supports custom id and className.
+- `Divider` — Horizontal line with a centered uppercase label, useful for "OR" separators.
+- `IconInput` — Text input with a leading icon, label, and placeholder; supports required/type props.
+- `PrimaryButton` — Full-width orange CTA button with optional icon (left/right) and hover animation.
+- `SecondaryButton` — Full-width outlined button with a leading icon and subtle hover background.
+
 ### Types
 
 - `ParamsLocaleType` — `Promise<{ locale: LocaleType }>`
