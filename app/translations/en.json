@@ -1,4 +1,19 @@
 {
+  "Signup": {
+    "establishSecureArchive": "Establish Secure Archive Point",
+    "systemUsername": "System_Username",
+    "usernamePlaceholder": "admin_sys_01",
+    "engineerEmail": "Engineer_Email",
+    "emailPlaceholder": "user@vault.internal",
+    "accessKey": "Access_Key",
+    "passwordPlaceholder": "••••••••••••",
+    "keyEntropyLevel": "Key_Entropy_Level",
+    "confirmOwnership": "Confirm legal ownership of the archive and compliance with",
+    "securityProtocol": "Security_Protocol_v4",
+    "initializeVault": "Initialize_Vault",
+    "decryptExisting": "DECRYPT_EXISTING",
+    "systemStatus": "SYSTEM_STATUS"
+  },
   "Login": {
     "sysAuthDaemon": "SYS_AUTH_DAEMON",
     "systemId": "ID: SV-882-QX-9",

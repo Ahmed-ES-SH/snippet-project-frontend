@@ -1,6 +1,8 @@
+import { ReactNode } from "react";
+
 interface CheckboxProps {
   id: string;
-  label: string;
+  label: ReactNode;
   className?: string;
 }
 

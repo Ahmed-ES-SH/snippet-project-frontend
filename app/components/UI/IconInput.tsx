@@ -9,6 +9,8 @@ interface IconInputProps {
   icon: IconType;
   required?: boolean;
   className?: string;
+  value?: string;
+  onChange?: (e: React.ChangeEvent<HTMLInputElement>) => void;
 }
 
 export default function IconInput({
@@ -20,6 +22,8 @@ export default function IconInput({
   icon: Icon,
   required = false,
   className = "",
+  value,
+  onChange,
 }: IconInputProps) {
   return (
     <div className={`space-y-sm ${className}`}>
@@ -40,6 +44,8 @@ export default function IconInput({
           placeholder={placeholder}
           required={required}
           type={type}
+          value={value}
+          onChange={onChange}
         />
       </div>
     </div>

@@ -1,4 +1,19 @@
 {
+  "Signup": {
+    "establishSecureArchive": "إنشاء نقطة أرشيف آمنة",
+    "systemUsername": "اسم_المستخدم_النظامي",
+    "usernamePlaceholder": "admin_sys_01",
+    "engineerEmail": "بريد_المهندس",
+    "emailPlaceholder": "user@vault.internal",
+    "accessKey": "مفتاح_الوصول",
+    "passwordPlaceholder": "••••••••••••",
+    "keyEntropyLevel": "مستوى_إنتروبيا_المفتاح",
+    "confirmOwnership": "تأكيد الملكية القانونية للأرشيف والامتثال لـ",
+    "securityProtocol": "بروتوكول_الأمان_v4",
+    "initializeVault": "تهيئة_الخزينة",
+    "decryptExisting": "فك_تشفير_موجود",
+    "systemStatus": "حالة_النظام"
+  },
   "Login": {
     "sysAuthDaemon": "SYS_AUTH_DAEMON",
     "systemId": "ID: SV-882-QX-9",
