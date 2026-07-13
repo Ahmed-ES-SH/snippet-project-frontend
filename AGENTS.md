@@ -135,6 +135,7 @@ app/helpers/<domain>/<feature>/
 - Real `<form>`, `<label>`, `<input>` for forms
 - `<ul>`/`<li>` for repeated items
 - Headings in hierarchical order
+- Use `react-icons` (Font Awesome via `react-icons/fa`) for all icons — use `getIconComponent(iconName)` helper
 
 ## Existing Infrastructure
 
@@ -166,6 +167,55 @@ app/helpers/<domain>/<feature>/
 
 - `ParamsLocaleType` — `Promise<{ locale: LocaleType }>`
 - `LocaleType` — `"en" | "ar"`
+
+## Motion (Framer Motion) v12+ — Scroll Animation Rules
+
+The project uses `framer-motion` v12.42+. Import from `"framer-motion"`. Always match the project's existing import path.
+
+### When to use Motion vs native CSS
+
+| Scenario | Use |
+|---|---|
+| Simple fade-in/slide-up on scroll | Native CSS `animation-timeline: view()` (Tier 1) |
+| Need React state, stagger orchestration, or exit animations | Motion `whileInView` + variants (Tier 3) |
+| Parallax or scrub-linked effects | Motion `useScroll` + `useTransform` (Tier 3) |
+| Pinned multi-step scrollytelling | GSAP ScrollTrigger (Tier 4) |
+
+**Default to the smallest capable option.** Don't reach for Motion when native CSS covers it.
+
+### Performance non-negotiables
+
+- **Only animate `transform` and `opacity`.** Never animate `width`, `height`, `top`, `left`, `margin`, or `box-shadow` — these trigger layout recalc on every frame.
+- **MotionValues don't re-render React.** `useScroll`/`useTransform` update outside the render cycle. Never pair them with `useState` + a scroll listener — that defeats the purpose.
+- **Use `will-change` sparingly.** Apply it right before animation starts; remove after it finishes.
+- **Cap simultaneous scroll-linked elements.** `whileInView` triggers are cheap even by the dozen. Scroll-scrubbed (`useScroll`) elements sharing one parent are expensive — consolidate or use one parent-level `useScroll`.
+- **Respect `prefers-reduced-motion`.** Wrap Motion animations in a reduced-motion check. Motion's `shouldReduceMotion` disables transform animations automatically for layout props, but always provide a non-animated fallback for entrance reveals.
+
+### Import path
+
+```tsx
+// Preferred (matches framer-motion v12+ docs)
+import { motion, useScroll, useTransform, useInView, AnimatePresence } from "framer-motion";
+
+// Also valid if project uses the older path
+import { motion, useScroll, useTransform } from "framer-motion";
+```
+
+### Key APIs for scroll work
+
+- **`whileInView`** — declarative scroll-triggered entrance. Set `viewport={{ once: true, amount: 0.2, margin: "0px 0px -15% 0px" }}` for best feel.
+- **`useScroll({ target, offset })`** — tracks element progress relative to viewport. Returns `MotionValue`.
+- **`useTransform(value, inputRange, outputRange)`** — maps scroll progress to visual properties (opacity, y, scale).
+- **Variants + `staggerChildren`** — orchestrates staggered reveals across sibling grids/lists. Use `staggerChildren: 0.08`–`0.12` for cards.
+- **Spring config** — use `type: "spring", stiffness: 100, damping: 15` for natural deceleration. Avoid linear for reveals.
+
+### Taste defaults (read as "premium", not "generic AOS")
+
+- Easing: `cubic-bezier(0.16, 1, 0.3, 1)` (decelerate). Reserve `linear` for scroll-scrubbed 1:1 only.
+- Translate distance: 40–80px. Duration: 0.5–0.8s. Anything longer/slower feels sluggish.
+- Stagger siblings at 60–120ms offset. Simultaneous identical animations feel robotic.
+- Trigger reveals at ~10–20% into viewport (negative bottom margin), not at full visibility.
+- Default to `once: true`. Re-playing on scroll-back feels chaotic unless the user explicitly wants it.
 
 ## Screens Directory
 

@@ -36,5 +36,189 @@
     "signInWithGoogle": "Sign in with Google",
     "securityProtocol": "Security_Protocol",
     "createAccount": "Create_Account"
+  },
+  "Features": {
+    "hero": {
+      "title": "كل ما تحتاجه، لا ما لا تحتاجه",
+      "subtitle": "مكتبة مطورين مبنية خصيصًا بأربع قدرات أساسية مصممة لاستعادة ضريبة إعادة حل المشاكل التي حللتها بالفعل."
+    },
+    "search": {
+      "title": "اعثر على أي شيء في أقل من 500 مللي ثانية",
+      "subtitle": "بحث وتصفية سريعة",
+      "description": "بحث فوري ومؤجل عبر العناوين والأوصاف ومحتوى الكود والعلامات. اكتب كلمة وشاهد النتائج تتقلص في الوقت الفعلي. بدون مؤشرات تحميل، بدون تحديث الصفحة — فقط المقتطف الذي كنت تبحث عنه.",
+      "mockQuery": "$ sv search \"jwt middleware\"",
+      "mockResult1": "auth-middleware.ts",
+      "mockResult1Desc": "NestJS JWT guard مع التحقق من الجلسة",
+      "mockResult2": "auth-strategy.ts",
+      "mockResult2Desc": "استراتيجية Passport المحلية مع bcrypt",
+      "mockResult3": "auth-module.ts",
+      "mockResult3Desc": "تكوين وتصدير وحدة المصادقة"
+    },
+    "tagging": {
+      "title": "نظم بطريقتك",
+      "subtitle": "تصنيف حر",
+      "description": "قاموس علامات عالمي مع إزالة التكرار غير الحساس لحالة الأحرف. بدون تسلسلات مجلدات صارمة — صنف المقتطفات بأي شيء مناسب لسير عملك. اcombine العلامات لإنشاء عرضات تطابق طريقة تفكيرك في الكود.",
+      "tag1": "مصادقة",
+      "tag2": "رياكت",
+      "tag3": "بايثون",
+      "tag4": "نيستجس",
+      "tag5": "خطافات",
+      "tag6": "برمجيات وسيطة",
+      "tag7": "فاتساباي",
+      "tag8": "تايب سكريبت",
+      "tag9": "غير متزامن",
+      "tag10": "واجهة برمجة",
+      "tag11": "قاعدة بيانات",
+      "tag12": "اختبار",
+      "tagHint": "اجمع العلامات للتصفية"
+    },
+    "sharing": {
+      "title": "شارك بنقرة تبديل",
+      "subtitle": "مشاركة بنقرة واحدة",
+      "description": "قم بتبديل رؤية المقتطف لإنشاء رابط مشاركة آمن ومستقر. أرسله لزميل، أو ادمجه في الوثائق، أو انشره في موضوع. لا حاجة لحساب على الطرف المستقبل — فقط كود يعمل، يُشارك فورًا.",
+      "mockSlug": "sv.sh/9f3kx2m",
+      "mockStatus": "عام",
+      "mockCopied": "تم نسخ الرابط إلى الحافظة",
+      "mockVisibility": "الرؤية"
+    },
+    "editor": {
+      "title": "محرر حقيقي، ليس حقل نص",
+      "subtitle": "تحرير الكود بمحرك Monaco",
+      "description": "تكامل كامل مع محرر Monaco — نفس المحرك الذي يدعم VS Code. تمييز بناء جملة لأكثر من 50 لغة، مسافة بادئة ذكية، تطابق الأقواس، وخريطة مصغرة. اكتب المقتطفات كما تكتب الكود: بدقة.",
+      "fileName": "auth-middleware.ts",
+      "language": "TypeScript",
+      "line1Import": "استيراد",
+      "line1From": "من",
+      "line1Module": "'@nestjs/common'",
+      "line2Import": "استيراد",
+      "line2From": "من",
+      "line2Module": "'@nestjs/passport'",
+      "line5Decorator": "@Injectable()",
+      "line6Keyword": "تصدير فئة",
+      "line6Name": "JwtAuthGuard",
+      "line6Extends": "تمتد",
+      "line6Base": "AuthGuard",
+      "line6Arg": "'jwt'",
+      "line7Keyword": "غير متزامن",
+      "line7Method": "canActivate",
+      "line8Keyword": "const",
+      "line8Var": "activate",
+      "line8Call": "await super",
+      "line9Keyword": "const",
+      "line9Var": "request",
+      "line9Chain": "context.switchToHttp().getRequest()",
+      "line10Comment": "// التحقق من ملف تعريف الجلسة",
+      "line11Keyword": "إرجاع",
+      "line11Var": "activate",
+      "statusReady": "جاهز",
+      "tagAuth": "#مصادقة",
+      "tagNestjs": "#نيستجس"
+    },
+    "cta": {
+      "title": "توقف عن إعادة حل ما حللته بالفعل",
+      "description": "انضم إلى آلاف المطورين الذين يلتقطون ويجدون ويشاركون مقتطفات الكود بدقة جراحية.",
+      "button": "إنشاء حساب مجاني",
+      "note": "مجاني للاستخدام الشخصي. لا حاجة لبطاقة ائتمان."
+    }
+  },
+  "Home": {
+    "nav": {
+      "home": "الرئيسية",
+      "features": "المميزات",
+      "documentation": "التوثيق",
+      "searchPlaceholder": "البحث عن المقتطفات...",
+      "signIn": "تسجيل الدخول",
+      "register": "حساب جديد"
+    },
+    "hero": {
+      "headline": "توقف عن إعادة حل مشاكل",
+      "headlineHighlight": "لقد حللتها بالفعل",
+      "description": "مكتبة المطورين المحترفين القابلة للبحث والتصنيف. احفظ المنطق المعقد في ثوانٍ واسترجعه فورًا بدقة تقنية.",
+      "createAccount": "إنشاء حساب مجاني",
+      "viewDocs": "عرض وثائق API",
+      "trustedBy": "موثوق من قبل أكثر من 10,000 مطور محترف"
+    },
+    "editor": {
+      "fileName": "auth-middleware.ts",
+      "language": "TypeScript",
+      "status": "جاهز",
+      "tagAuth": "#مصادقة",
+      "tagNestjs": "#نيستجس"
+    },
+    "stats": {
+      "search": "بحث مع تأخير",
+      "auth": "مصادقة قائمة على الجلسة",
+      "sharing": "مشاركة بنقرة واحدة"
+    },
+    "features": {
+      "title": "مصمم للكفاءة",
+      "subtitle": "مجموعة أدوات مبنية خصيصًا لسير عمل المطورين عالي الأداء.",
+      "searchTitle": "بحث وتصفية سريعة",
+      "searchDescription": "بحث فوري ومؤجل عبر العناوين والأوصاف والعلامات. ابحث عن المنطق الذي تحتاجه في أقل من 500 مللي ثانية.",
+      "taggingTitle": "تصنيف حر",
+      "taggingDescription": "قاموس علامات عالمي مع إزالة التكرار غير الحساس لحالة الأحرف. نظم مكتبتك بطريقتك، بدون تسلسلات مجلدات صارمة.",
+      "sharingTitle": "مشاركة بنقرة واحدة",
+      "sharingDescription": "قم بتبديل الرؤية لإنشاء رابط مشاركة آمن ومستقر. لم يكن التنقيح التعاوني سلسًا إلى هذا الحد.",
+      "editorTitle": "محرر أكواد حقيقي",
+      "editorDescription": "تكامل كامل مع محرر Monaco. تمييز بناء الجملة وأرقام الأسطر والمسافة البادئة الذكية لأكثر من 50 لغة."
+    },
+    "workflow": {
+      "title": "سير العمل",
+      "stepsLabel": "3 خطوات بسيطة",
+      "step1Number": "01",
+      "step1Title": "التقاط",
+      "step1Description": "الصق المنطق مباشرة في محررنا المدعوم بـ VS Code. أضف البيانات الوصفية والعلامات في ثوانٍ.",
+      "step2Number": "02",
+      "step2Title": "بحث",
+      "step2Description": "استخدم اختصارات لوحة المفاتيح والبحث السريع للغاية لاسترجاع المقتطفات تمامًا عندما تحتاجها.",
+      "step3Number": "03",
+      "step3Title": "مشاركة",
+      "step3Description": "تعاون من خلال إنشاء روابط عامة فورية. انسخ إلى الحافظة بنقرة واحدة."
+    },
+    "cta": {
+      "title": "مقتطفاتك، يمكن العثور عليها فعليًا",
+      "description": "انضم إلى أكثر من 10,000 مطور استعادوا إنتاجيتهم. بدون حشو، أقصى فائدة.",
+      "button": "ابدأ الآن",
+      "note": "مجاني للاستخدام الشخصي."
+    },
+    "builtFor": {
+      "title": "مصمم للمطورين الذين يشحنون فعليًا",
+      "subtitle": " سواء كنت تحل الأخطاء الساعة 2 صباحًا أو تقوم بتهيئة عضو فريق جديد، SnippetVault يتناسب مع طريقة عملك.",
+      "persona1Title": "مهندسو الواجهة الكاملة",
+      "persona1Description": "تنقل بين الواجهة الأمامية والخلفية يوميًا. تحتاج إلى وصول فوري إلى الأنماط عبر كامل حstack الخاص بك.",
+      "persona1Pain": "التنقل عبر المستودعات القديمة بحثًا عن تلك البرمجيات الوسيطة التي كتبتها",
+      "persona2Title": "المحافظ على المصادر المفتوحة",
+      "persona2Description": "تتعدد مشاركتك عبر المشاريع وتشارك الأنماط عبر المجتمعات. تحتاج إلى مرجع مركزي يسافر معك.",
+      "persona2Pain": "إعادة كتابة نفس القوالب الجاهزة لكل مشروع جديد",
+      "persona3Title": "قادة التقنية والمهندسين المعماريين",
+      "persona3Description": "توحيد الأنماط عبر الفريق. شارك الت implementations المعتمدة دون نسخ والصق رسائل Slack.",
+      "persona3Pain": "الإجابة على 'كيف فعلنا X؟' للمرة الخامسة هذا الشهر",
+      "problemStrip1": "سياق مفقود",
+      "problemStrip2": "استبيان متكرر",
+      "problemStrip3": "معرفة قبائلية"
+    },
+    "codeShowcase": {
+      "title": "شاهد العمل في الحركة",
+      "subtitle": "مقتطفات حقيقية، بناء جملة حقيقي، علامات حقيقية. هكذا تبدو مكتبتك.",
+      "snippet1Language": "TypeScript",
+      "snippet1Tag1": "مصادقة",
+      "snippet1Tag2": "نيستجس",
+      "snippet1Tag3": "برمجيات وسيطة",
+      "snippet2Language": "Python",
+      "snippet2Tag1": "واجهة برمجة",
+      "snippet2Tag2": "فاتساباي",
+      "snippet2Tag3": "غير متزامن",
+      "snippet3Language": "TypeScript",
+      "snippet3Tag1": "رياكت",
+      "snippet3Tag2": "خطافات",
+      "snippet3Tag3": "واجهة أمامية"
+    },
+    "footer": {
+      "copyright": "© 2024 SnippetVault v2.4.0-stable",
+      "status": "حالة النظام",
+      "docs": "وثائق API",
+      "cli": "أداة CLI",
+      "privacy": "الخصوصية"
+    }
   }
 }
