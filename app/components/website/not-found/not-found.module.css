@@ -1,0 +1,53 @@
+.glitchText {
+  position: relative;
+}
+
+.glitchText::before {
+  content: attr(data-text);
+  position: absolute;
+  left: -2px;
+  text-shadow: 2px 0 #ff5c00;
+  clip: rect(44px, 450px, 56px, 0);
+  animation: glitchAnim 5s infinite linear alternate-reverse;
+}
+
+@keyframes glitchAnim {
+  0% { clip: rect(31px, 9999px, 94px, 0); }
+  20% { clip: rect(62px, 9999px, 42px, 0); }
+  40% { clip: rect(10px, 9999px, 86px, 0); }
+  60% { clip: rect(55px, 9999px, 12px, 0); }
+  80% { clip: rect(84px, 9999px, 73px, 0); }
+  100% { clip: rect(19px, 9999px, 33px, 0); }
+}
+
+.pulseNode {
+  width: 8px;
+  height: 8px;
+  background-color: #52443e;
+  border-radius: 1px;
+}
+
+.pulseNodeActive {
+  background-color: #ff5c00;
+  box-shadow: 0 0 10px #ff5c00;
+  animation: pulseBreak 2s infinite ease-in-out;
+}
+
+@keyframes pulseBreak {
+  0%, 100% { opacity: 0.3; transform: scale(1); }
+  50% { opacity: 1; transform: scale(1.2); }
+  55% { opacity: 0; transform: scale(0.8); }
+  60% { opacity: 1; transform: scale(1); }
+}
+
+.customScrollbar::-webkit-scrollbar {
+  width: 4px;
+}
+
+.customScrollbar::-webkit-scrollbar-track {
+  background: #1a1b22;
+}
+
+.customScrollbar::-webkit-scrollbar-thumb {
+  background: #5b4137;
+}
