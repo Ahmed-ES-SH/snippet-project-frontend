@@ -36,5 +36,189 @@
     "signInWithGoogle": "Sign in with Google",
     "securityProtocol": "Security_Protocol",
     "createAccount": "Create_Account"
+  },
+  "Features": {
+    "hero": {
+      "title": "Everything you need, nothing you don't",
+      "subtitle": "A purpose-built developer library with four core capabilities designed to eliminate the recurring tax of re-solving already-solved problems."
+    },
+    "search": {
+      "title": "Find anything in under 500ms",
+      "subtitle": "Fast search & filters",
+      "description": "Instant, debounced search across titles, descriptions, code content, and tags. Type a keyword and watch results narrow in real time. No loading spinners, no page refreshes — just the snippet you were looking for.",
+      "mockQuery": "$ sv search \"jwt middleware\"",
+      "mockResult1": "auth-middleware.ts",
+      "mockResult1Desc": "NestJS JWT guard with session validation",
+      "mockResult2": "auth-strategy.ts",
+      "mockResult2Desc": "Passport local strategy with bcrypt",
+      "mockResult3": "auth-module.ts",
+      "mockResult3Desc": "Auth module configuration and exports"
+    },
+    "tagging": {
+      "title": "Organize your way",
+      "subtitle": "Freeform tagging",
+      "description": "A global tag dictionary with case-insensitive deduplication. No rigid folder hierarchies — tag snippets with whatever makes sense for your workflow. Combine tags to build views that match how you actually think about code.",
+      "tag1": "auth",
+      "tag2": "react",
+      "tag3": "python",
+      "tag4": "nestjs",
+      "tag5": "hooks",
+      "tag6": "middleware",
+      "tag7": "fastapi",
+      "tag8": "typescript",
+      "tag9": "async",
+      "tag10": "api",
+      "tag11": "database",
+      "tag12": "testing",
+      "tagHint": "Combine tags to filter"
+    },
+    "sharing": {
+      "title": "Share with one toggle",
+      "subtitle": "One-click public sharing",
+      "description": "Toggle a snippet's visibility to generate a stable, secure share slug. Send it to a colleague, embed it in docs, or post it in a thread. No account required on the receiving end — just working code, shared instantly.",
+      "mockSlug": "sv.sh/9f3kx2m",
+      "mockStatus": "PUBLIC",
+      "mockCopied": "Link copied to clipboard",
+      "mockVisibility": "Visibility"
+    },
+    "editor": {
+      "title": "A real editor, not a text area",
+      "subtitle": "Monaco-powered code editing",
+      "description": "Full Monaco Editor integration — the same engine powering VS Code. Syntax highlighting for 50+ languages, intelligent indentation, bracket matching, and minimap. Write snippets the way you write code: with precision.",
+      "fileName": "auth-middleware.ts",
+      "language": "TypeScript",
+      "line1Import": "import",
+      "line1From": "from",
+      "line1Module": "'@nestjs/common'",
+      "line2Import": "import",
+      "line2From": "from",
+      "line2Module": "'@nestjs/passport'",
+      "line5Decorator": "@Injectable()",
+      "line6Keyword": "export class",
+      "line6Name": "JwtAuthGuard",
+      "line6Extends": "extends",
+      "line6Base": "AuthGuard",
+      "line6Arg": "'jwt'",
+      "line7Keyword": "async",
+      "line7Method": "canActivate",
+      "line8Keyword": "const",
+      "line8Var": "activate",
+      "line8Call": "await super",
+      "line9Keyword": "const",
+      "line9Var": "request",
+      "line9Chain": "context.switchToHttp().getRequest()",
+      "line10Comment": "// Validate session cookie",
+      "line11Keyword": "return",
+      "line11Var": "activate",
+      "statusReady": "Ready",
+      "tagAuth": "#auth",
+      "tagNestjs": "#nestjs"
+    },
+    "cta": {
+      "title": "Stop re-solving what you've already solved",
+      "description": "Join thousands of developers who capture, find, and share code snippets with surgical precision.",
+      "button": "Create Free Account",
+      "note": "Free for personal use. No credit card required."
+    }
+  },
+  "Home": {
+    "nav": {
+      "home": "Home",
+      "features": "Features",
+      "documentation": "Documentation",
+      "searchPlaceholder": "Search snippets...",
+      "signIn": "Sign In",
+      "register": "Sign Up"
+    },
+    "hero": {
+      "headline": "Stop re-solving problems you've",
+      "headlineHighlight": "already solved",
+      "description": "The elite developer's searchable, taggable library. Capture complex logic in seconds and retrieve it instantly with technical precision.",
+      "createAccount": "Create Free Account",
+      "viewDocs": "View API Docs",
+      "trustedBy": "Trusted by 10k+ senior engineers"
+    },
+    "editor": {
+      "fileName": "auth-middleware.ts",
+      "language": "TypeScript",
+      "status": "Ready",
+      "tagAuth": "#auth",
+      "tagNestjs": "#nestjs"
+    },
+    "stats": {
+      "search": "Debounced Search",
+      "auth": "Session-Based Auth",
+      "sharing": "One-Click Public Sharing"
+    },
+    "features": {
+      "title": "Engineered for Efficiency",
+      "subtitle": "A purpose-built suite of tools focused on the high-performance developer workflow.",
+      "searchTitle": "Fast search & filters",
+      "searchDescription": "Instant, debounced search across titles, descriptions, and tags. Find the exact logic you need in under 500ms.",
+      "taggingTitle": "Freeform tagging",
+      "taggingDescription": "Global tag dictionary with case-insensitive deduplication. Organize your library your way, without rigid folder hierarchies.",
+      "sharingTitle": "One-click public sharing",
+      "sharingDescription": "Toggle visibility to generate a secure, stable share slug. Collaborative debugging has never been this seamless.",
+      "editorTitle": "Real code editor",
+      "editorDescription": "Full Monaco editor integration. Syntax highlighting, line numbers, and intelligent indentation for 50+ languages."
+    },
+    "workflow": {
+      "title": "The Workflow",
+      "stepsLabel": "3 Simple Steps",
+      "step1Number": "01",
+      "step1Title": "Capture",
+      "step1Description": "Paste logic directly into our VS Code-powered editor. Add metadata and tags in seconds.",
+      "step2Number": "02",
+      "step2Title": "Find",
+      "step2Description": "Use keyboard shortcuts and lightning-fast search to retrieve snippets exactly when you need them.",
+      "step3Number": "03",
+      "step3Title": "Share",
+      "step3Description": "Collaborate by generating instant public links. Copy to clipboard with one click."
+    },
+    "cta": {
+      "title": "Your snippets, actually findable",
+      "description": "Join 10,000+ developers who have reclaimed their productivity. Zero bloat, maximum utility.",
+      "button": "Get Started Now",
+      "note": "Free for personal use."
+    },
+    "builtFor": {
+      "title": "Built for developers who actually ship",
+      "subtitle": "Whether you're debugging at 2am or onboarding a new team member, SnippetVault fits how you already work.",
+      "persona1Title": "Full-Stack Engineers",
+      "persona1Description": "Jump between frontend and backend daily. Need instant access to patterns across your entire stack.",
+      "persona1Pain": "Scrolling through old repos for that middleware you wrote",
+      "persona2Title": "Open Source Maintainers",
+      "persona2Description": "Juggle multiple projects and share patterns across communities. Need a central reference that travels with you.",
+      "persona2Pain": "Rewriting the same boilerplate for every new project",
+      "persona3Title": "Tech Leads & Architects",
+      "persona3Description": "Standardize patterns across a team. Share vetted implementations without copy-pasting Slack messages.",
+      "persona3Pain": "Answering 'how did we do X?' for the fifth time this month",
+      "problemStrip1": "Lost context",
+      "problemStrip2": "Repeated debugging",
+      "problemStrip3": "Tribal knowledge"
+    },
+    "codeShowcase": {
+      "title": "See it in action",
+      "subtitle": "Real snippets, real syntax, real tags. This is what your library looks like.",
+      "snippet1Language": "TypeScript",
+      "snippet1Tag1": "auth",
+      "snippet1Tag2": "nestjs",
+      "snippet1Tag3": "middleware",
+      "snippet2Language": "Python",
+      "snippet2Tag1": "api",
+      "snippet2Tag2": "fastapi",
+      "snippet2Tag3": "async",
+      "snippet3Language": "TypeScript",
+      "snippet3Tag1": "react",
+      "snippet3Tag2": "hooks",
+      "snippet3Tag3": "frontend"
+    },
+    "footer": {
+      "copyright": "© 2024 SnippetVault v2.4.0-stable",
+      "status": "System Status",
+      "docs": "API Docs",
+      "cli": "CLI Tool",
+      "privacy": "Privacy"
+    }
   }
 }
