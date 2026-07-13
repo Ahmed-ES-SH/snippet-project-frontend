@@ -11,6 +11,7 @@ import BuiltForSection from "@/app/components/website/home/BuiltForSection";
 import HowItWorks from "@/app/components/website/home/HowItWorks";
 import CodeShowcaseSection from "@/app/components/website/home/CodeShowcaseSection";
 import CtaBand from "@/app/components/website/home/CtaBand";
+import Hero from "../components/website/home/HeroSection-v2/Hero";
 
 export async function generateMetadata({
   params,
@@ -18,7 +19,10 @@ export async function generateMetadata({
   params: Promise<{ locale: string }>;
 }): Promise<Metadata> {
   const { locale } = await params;
-  const t = getTranslations(locale, "Home") as Record<string, Record<string, string>>;
+  const t = getTranslations(locale, "Home") as Record<
+    string,
+    Record<string, string>
+  >;
   const sharedMetaData = getSharedMetadata(
     locale,
     t.hero.headline,
@@ -41,9 +45,10 @@ export default async function HomePage({
 
   return (
     <main className="pt-16">
-      <HeroParallax>
+      {/*<HeroParallax>
         <HeroSection locale={locale as LocaleType} />
-      </HeroParallax>
+      </HeroParallax>*/}
+      <Hero />
       <ScrollReveal>
         <StatStrip locale={locale as LocaleType} />
       </ScrollReveal>

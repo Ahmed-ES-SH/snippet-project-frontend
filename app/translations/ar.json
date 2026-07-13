@@ -226,5 +226,32 @@
       "cli": "أداة CLI",
       "privacy": "الخصوصية"
     }
+  },
+  "NotFound": {
+    "errorBadge": "SYSTEM_INTERRUPTION // ERR_404",
+    "title": "404",
+    "subtitle": "القطعة المنطقية غير موجودة",
+    "description": "المورد المطلوب في هذا العنوان غير متاح حاليًا أو تم حذفه من شبكة المزامنة العالمية.",
+    "initializeSearch": "بدء البحث",
+    "returnToWorkbench": "العودة إلى لوحة العمل",
+    "contactAdmin": "اتصال بمسؤول النظام",
+    "faultLog": "FAULT_LOG_0x82",
+    "requestId": "REQUEST_ID",
+    "requestIdValue": "ERR-0x404-VAULT",
+    "timestamp": "TIMESTAMP",
+    "status": "STATUS",
+    "statusValue": "UNRESOLVED_PATH",
+    "logTrace": "> جارٍ جلب تتبع الأخطاء...",
+    "logWarn": "> [WARN] انفصلت شبكة المزامنة العالمية",
+    "logFail1": "> [FAIL] القطعة 0xAF32 غير موجودة في ذاكرة Workbench المؤقتة",
+    "logFail2": "> [FAIL] نبض مصادقة Vault: TIMEOUT",
+    "logCrit": "> [CRIT] تعطلت محرك التوجيه عند 0.0.0.0",
+    "dataFlowIntegrity": "سلامة تدفق البيانات",
+    "connectionState": "CONNECTION_STATE: INTERRUPTED_BY_PEER",
+    "copyright": "© 2024 بروتوكول تشخيص SnippetVault",
+    "systemStatus": "حالة النظام",
+    "documentation": "التوثيق",
+    "apiReference": "مرجع API",
+    "securityLogs": "سجلات الأمان"
   }
 }

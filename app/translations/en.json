@@ -226,5 +226,32 @@
       "cli": "CLI Tool",
       "privacy": "Privacy"
     }
+  },
+  "NotFound": {
+    "errorBadge": "SYSTEM_INTERRUPTION // ERR_404",
+    "title": "404",
+    "subtitle": "Logic Fragment Not Located",
+    "description": "The requested resource at this address is currently unavailable or has been purged from the global sync mesh.",
+    "initializeSearch": "Initialize Search",
+    "returnToWorkbench": "Return to Workbench",
+    "contactAdmin": "Contact System Administrator",
+    "faultLog": "FAULT_LOG_0x82",
+    "requestId": "REQUEST_ID",
+    "requestIdValue": "ERR-0x404-VAULT",
+    "timestamp": "TIMESTAMP",
+    "status": "STATUS",
+    "statusValue": "UNRESOLVED_PATH",
+    "logTrace": "> Fetching stack trace...",
+    "logWarn": "> [WARN] Global sync mesh disconnected",
+    "logFail1": "> [FAIL] Fragment 0xAF32 not found in Workbench cache",
+    "logFail2": "> [FAIL] Vault authorization heartbeat: TIMEOUT",
+    "logCrit": "> [CRIT] Routing engine stalled at 0.0.0.0",
+    "dataFlowIntegrity": "Data Flow Integrity",
+    "connectionState": "CONNECTION_STATE: INTERRUPTED_BY_PEER",
+    "copyright": "© 2024 SnippetVault Diagnostic Protocol",
+    "systemStatus": "System Status",
+    "documentation": "Documentation",
+    "apiReference": "API Reference",
+    "securityLogs": "Security Logs"
   }
 }
