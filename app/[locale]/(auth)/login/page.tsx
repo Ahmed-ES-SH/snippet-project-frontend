@@ -2,7 +2,6 @@ import { Metadata } from "next";
 import { getTranslations } from "@/app/helpers/global/getTranslations";
 import { getSharedMetadata } from "@/app/helpers/global/getSharedMetadata";
 import { ParamsLocaleType } from "@/app/hooks/global/useLocale";
-import DiagnosticsPanel from "@/app/components/auth/login/DiagnosticsPanel";
 import LoginForm from "@/app/components/auth/login/LoginForm";
 
 export async function generateMetadata({
@@ -27,8 +26,7 @@ export async function generateMetadata({
 
 export default async function LoginPage() {
   return (
-    <main className="grow flex overflow-hidden">
-      <DiagnosticsPanel />
+    <main className="grow flex pt-16 items-center justify-center overflow-hidden">
       <LoginForm />
     </main>
   );

@@ -257,8 +257,8 @@ button {
     cursor : pointer
 }
 
-butotn:disabled {
-    cursor : not-allowed 
+button:disabled {
+    cursor: not-allowed;
 }
 
 /* Global animations */
@@ -285,103 +285,4 @@ butotn:disabled {
   }
 }
 
-/* Grid background */
-.grid-bg {
-  background-image:
-    linear-gradient(var(--outline-muted) 1px, transparent 1px),
-    linear-gradient(90deg, var(--outline-muted) 1px, transparent 1px);
-  background-size: 60px 60px;
-  opacity: 0.15;
-  animation: grid-drift 20s linear infinite;
-}
 
-.neon-circle {
-  position: absolute;
-  border-radius: 50%;
-  filter: blur(100px);
-  animation: neon-breathe 6s ease-in-out infinite;
-}
-
-.neon-circle--1 {
-  width: 500px;
-  height: 500px;
-  background: var(--primary-container);
-  opacity: 0.12;
-  top: 10%;
-  left: -5%;
-  animation-delay: 0s;
-}
-
-.neon-circle--2 {
-  width: 400px;
-  height: 400px;
-  background: var(--primary);
-  opacity: 0.08;
-  bottom: 10%;
-  right: -5%;
-  animation-delay: 3s;
-}
-
-@keyframes grid-drift {
-  0% {
-    background-position: 0 0;
-  }
-  100% {
-    background-position: 60px 60px;
-  }
-}
-
-@keyframes neon-breathe {
-  0%, 100% {
-    opacity: 0.08;
-    transform: scale(1);
-  }
-  50% {
-    opacity: 0.18;
-    transform: scale(1.1);
-  }
-}
-
-@media (prefers-reduced-motion: reduce) {
-  .grid-bg,
-  .neon-circle {
-    animation: none;
-  }
-}
-
-/* Login screen animations */
-.scan-line {
-  background: linear-gradient(
-    to bottom,
-    transparent,
-    rgba(255, 92, 0, 0.1),
-    transparent
-  );
-  height: 100px;
-  width: 100%;
-  position: absolute;
-  top: -100px;
-  animation: scan 4s linear infinite;
-}
-
-@keyframes scan {
-  0% {
-    top: -100px;
-  }
-  100% {
-    top: 100%;
-  }
-}
-
-@keyframes spin-slow {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
-}
-
-.animate-spin-slow {
-  animation: spin-slow 10s linear infinite;
-}

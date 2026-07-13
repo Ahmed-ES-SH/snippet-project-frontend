@@ -5,7 +5,7 @@ type Translations = typeof enTranslations;
 
 export const getTranslations = (
   locale: string,
-  namespace?: keyof Translations
+  namespace?: keyof Translations,
 ) => {
   const translations: Translations =
     locale === "ar" ? arTranslations : enTranslations;

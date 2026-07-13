@@ -2,6 +2,7 @@ import { getTranslations } from "@/app/helpers/global/getTranslations";
 import { LocaleType } from "@/app/hooks/global/useLocale";
 import { FaSearch } from "react-icons/fa";
 import Image from "next/image";
+import Link from "next/link";
 
 interface NavbarProps {
   locale: LocaleType;
@@ -44,12 +45,18 @@ export default async function Navbar({ locale }: NavbarProps) {
         )}
 
         <div className="flex items-center gap-sm ms-md">
-          <button className="text-on-surface-variant font-body-md px-md py-sm rounded-sm hover:text-on-surface transition-colors">
+          <Link
+            href={"/login"}
+            className="text-on-surface-variant font-body-md px-md py-sm rounded-sm hover:text-on-surface transition-colors"
+          >
             {t.nav.signIn}
-          </button>
-          <button className="bg-primary-container text-on-primary-container px-lg py-sm font-bold rounded-sm hover:brightness-110 active:scale-[0.98] transition-all">
+          </Link>
+          <Link
+            href={"/signup"}
+            className="bg-primary-container text-on-primary-container px-lg py-sm font-bold rounded-sm hover:brightness-110 active:scale-[0.98] transition-all"
+          >
             {t.nav.register}
-          </button>
+          </Link>
         </div>
       </div>
     </nav>
