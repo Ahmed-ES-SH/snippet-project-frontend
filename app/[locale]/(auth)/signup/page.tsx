@@ -3,7 +3,6 @@ import { getTranslations } from "@/app/helpers/global/getTranslations";
 import { getSharedMetadata } from "@/app/helpers/global/getSharedMetadata";
 import { ParamsLocaleType } from "@/app/hooks/global/useLocale";
 import SignupForm from "@/app/components/auth/signup/SignupForm";
-import DiagnosticsPanel from "@/app/components/auth/login/DiagnosticsPanel";
 
 export async function generateMetadata({
   params,
@@ -27,8 +26,7 @@ export async function generateMetadata({
 
 export default async function SignupPage() {
   return (
-    <main className="grow flex overflow-hidden">
-      <DiagnosticsPanel />
+    <main className="grow min-h-screen  flex items-end justify-center overflow-hidden">
       <SignupForm />
     </main>
   );

@@ -1,143 +1,86 @@
-/* eslint-disable @typescript-eslint/no-explicit-any */
-"use server";
+import { PaginationMeta } from "@/app/types/pagination-meta";
+import { getCookie } from "./getCookie";
 
-import { ApiError } from "next/dist/server/api-utils";
-import { PaginationMeta } from "../types/global";
-import { getServerAuthCookieHeader } from "./session";
+type HttpMethod = "GET" | "POST" | "PUT" | "PATCH" | "DELETE";
 
-/* =========================================================
-   GLOBAL REQUEST
-   ✔ credentials: "include"
-   ✔ GET POST PATCH PUT DELETE
-   ✔ auto json parse
-   ✔ auto success/error handling
-   ✔ transform response
-========================================================= */
-
-type HttpMethod = "GET" | "POST" | "PATCH" | "PUT" | "DELETE";
-
-interface GlobalRequestOptions<TBody = any, TResult = any> {
+export interface RequestOptions<TBody = unknown, TResult = unknown> {
   endpoint: string;
   method?: HttpMethod;
   body?: TBody;
   headers?: HeadersInit;
-  defaultErrorMessage?: string;
-  transform?: (response: any) => TResult;
-  returnRaw?: boolean;
-  next?: RequestInit["next"];
   cache?: RequestCache;
+  next?: RequestInit["next"];
+  transform?: (data: unknown) => TResult;
 }
 
-interface GlobalResponse<T = any> {
-  success: boolean;
+export interface ApiResponse<T = unknown> {
   message: string;
-  data?: T;
-  statusCode?: number;
+  data: T;
   meta?: PaginationMeta;
 }
 
-/* =========================================================
-   MAIN REQUEST
-========================================================= */
+export class ApiError extends Error {
+  constructor(
+    message: string,
+    public readonly status: number,
+    public readonly data?: unknown,
+  ) {
+    super(message);
 
-export async function globalRequest<TBody = any, TResult = any>({
+    this.name = "ApiError";
+  }
+}
+
+export async function request<TBody = unknown, TResult = unknown>({
   endpoint,
   method = "GET",
   body,
-  headers = {},
-  defaultErrorMessage = "An unexpected error occurred",
-  transform,
-  returnRaw = false,
-  next,
+  headers,
   cache = "no-store",
-}: GlobalRequestOptions<TBody, TResult>): Promise<GlobalResponse<TResult>> {
-  try {
-    const url = process.env.API_BASE_URL + endpoint;
-    const requestHeaders = new Headers(headers);
+  next,
+  transform,
+}: RequestOptions<TBody, TResult>): Promise<TResult> {
+  const requestHeaders = new Headers(headers);
 
-    requestHeaders.set("Content-Type", "application/json");
+  requestHeaders.set("Content-Type", "application/json");
 
-    // This file runs exclusively on the server ("use server").
-    // Node.js fetch does NOT send cookies automatically — they must be forwarded manually.
-    // `credentials: "include"` has no effect in Node.js and is NOT used here.
-    const authCookieHeader = await getServerAuthCookieHeader();
+  const csrfToken =
+    typeof window !== "undefined" ? getCookie("csrf_token") : undefined;
 
-    if (authCookieHeader) {
-      const existingCookieHeader = requestHeaders.get("Cookie");
-      requestHeaders.set(
-        "Cookie",
-        existingCookieHeader
-          ? `${existingCookieHeader}; ${authCookieHeader}`
-          : authCookieHeader,
-      );
-    }
+  if (csrfToken) {
+    requestHeaders.set("X-CSRF-Token", csrfToken);
+  }
 
-    const response = await fetch(url, {
+  const response = await fetch(
+    `${process.env.NEXT_PUBLIC_API_BASE_URL}${endpoint}`,
+    {
       method,
       cache,
       next,
+      credentials: "include",
       headers: requestHeaders,
-
       body:
         method === "GET" || method === "DELETE"
           ? undefined
           : JSON.stringify(body),
-    });
+    },
+  );
 
-    /* =============================
-       Parse Response
-    ============================== */
+  const contentType = response.headers.get("content-type") ?? "";
 
-    let result: any = null;
+  const payload = contentType.includes("application/json")
+    ? await response.json()
+    : await response.text();
 
-    const contentType = response.headers.get("content-type") || "";
-
-    if (contentType.includes("application/json")) {
-      result = await response.json();
-    } else {
-      result = await response.text();
-    }
-
-    /* =============================
-       Handle Error
-    ============================== */
-
-    if (!response.ok) {
-      return {
-        success: false,
-        message: result?.message || result?.error || defaultErrorMessage,
-        statusCode: response.status,
-      };
-    }
-
-    /* =============================
-       Handle Success
-    ============================== */
-
-    const finalData = transform
-      ? transform(result)
-      : returnRaw
-        ? result
-        : result;
-
-    return {
-      success: true,
-      message: result?.message || "Request successful",
-      data: finalData,
-      statusCode: response.status,
-    };
-  } catch (error: any) {
-    if (error instanceof ApiError) {
-      return {
-        success: false,
-        message: error.message,
-        statusCode: error.statusCode,
-      };
-    }
-
-    return {
-      success: false,
-      message: defaultErrorMessage,
-    };
+  if (!response.ok) {
+    throw new ApiError(
+      payload?.message ?? "Request failed.",
+      response.status,
+      payload,
+    );
   }
+
+  const data = (payload as ApiResponse<TResult>).data;
+
+  return transform ? transform(data) : data;
 }

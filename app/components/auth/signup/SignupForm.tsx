@@ -1,133 +1,148 @@
 "use client";
 
-import { useState } from "react";
-import { FaTerminal, FaAt, FaKey, FaRocket } from "react-icons/fa";
+import { FaRocket } from "react-icons/fa";
+import { useForm, Controller } from "react-hook-form";
+import { zodResolver } from "@hookform/resolvers/zod";
+import { z } from "zod/v4";
 import { getTranslations } from "@/app/helpers/global/getTranslations";
 import { useLocale } from "@/app/hooks/global/useLocale";
-import IconInput from "@/app/components/UI/IconInput";
 import PrimaryButton from "@/app/components/UI/PrimaryButton";
-import Checkbox from "@/app/components/UI/Checkbox";
+import AuthBrandHeader from "@/app/components/UI/AuthBrandHeader";
+import {
+  SignupUsernameField,
+  SignupEmailField,
+  SignupPasswordField,
+  SignupConfirmPasswordField,
+  SignupTerms,
+  SignupFooter,
+} from "./";
+
+const signupSchema = z
+  .object({
+    username: z.string().min(1),
+    email: z.email(),
+    password: z.string().min(8),
+    confirmPassword: z.string().min(1),
+    terms: z.boolean(),
+  })
+  .refine((data) => data.password === data.confirmPassword, {
+    path: ["confirmPassword"],
+  });
+
+type SignupFormData = z.infer<typeof signupSchema>;
 
 export default function SignupForm() {
   const locale = useLocale();
   const t = getTranslations(locale, "Signup") as Record<string, string>;
-  const [password, setPassword] = useState("");
 
-  const strength = Math.min(100, (password.length / 12) * 100);
-  const strengthColor =
-    strength < 40
-      ? "bg-error"
-      : strength < 75
-        ? "bg-warning"
-        : "bg-solar-orange";
+  const {
+    control,
+    handleSubmit,
+    register,
+    formState: { isSubmitting },
+  } = useForm<SignupFormData>({
+    resolver: zodResolver(signupSchema),
+    defaultValues: {
+      username: "",
+      email: "",
+      password: "",
+      confirmPassword: "",
+      terms: false,
+    },
+  });
+
+  const onSubmit = async () => {
+    // TODO: wire to actual auth action
+    await new Promise((r) => setTimeout(r, 1500));
+  };
 
   return (
-    <section className="flex-1 flex items-center justify-center p-gutter bg-surface-lowest relative">
-      <div className="w-full max-w-[480px] bg-surface-container-low border border-outline-warm rounded-sm p-xl shadow-[0_0_40px_rgba(0,0,0,0.5)]">
-        {/* Logo & Header */}
-        <div className="flex flex-col items-center mb-xl">
-          <div className="h-16 w-16 mb-md flex items-center justify-center text-solar-orange text-4xl font-bold font-code-md">
-            &lt;/&gt;
-          </div>
-          <h1 className="font-headline-lg text-headline-lg text-solar-orange tracking-tighter uppercase font-bold">
-            SnippetVault
-          </h1>
-          <p className="font-label-md text-label-md text-on-surface-variant uppercase tracking-widest mt-base">
-            {t.establishSecureArchive}
-          </p>
-        </div>
+    <section className="w-full max-w-3xl mt-16 px-md py-lg md:p-gutter">
+      <div className="bg-surface-container-low border border-outline-warm rounded-sm p-lg md:p-xl">
+        <AuthBrandHeader description={t.establishSecureArchive} />
 
-        {/* Form */}
-        <form className="space-y-lg" onSubmit={(e) => e.preventDefault()}>
-          <IconInput
-            id="username"
+        <form className="space-y-lg" onSubmit={handleSubmit(onSubmit)}>
+          <Controller
             name="username"
-            type="text"
-            label={t.systemUsername}
-            placeholder={t.usernamePlaceholder}
-            icon={FaTerminal}
-            required
+            control={control}
+            render={({ field, fieldState }) => (
+              <SignupUsernameField
+                error={fieldState.error}
+                value={field.value}
+                onChange={field.onChange}
+                label={t.systemUsername}
+                placeholder={t.usernamePlaceholder}
+                errorMessage={fieldState.error?.message}
+              />
+            )}
           />
 
-          <IconInput
-            id="email"
+          <Controller
             name="email"
-            type="email"
-            label={t.engineerEmail}
-            placeholder={t.emailPlaceholder}
-            icon={FaAt}
-            required
+            control={control}
+            render={({ field, fieldState }) => (
+              <SignupEmailField
+                error={fieldState.error}
+                value={field.value}
+                onChange={field.onChange}
+                label={t.engineerEmail}
+                placeholder={t.emailPlaceholder}
+                errorMessage={fieldState.error?.message}
+              />
+            )}
           />
 
-          <div className="space-y-sm">
-            <IconInput
-              id="accessKey"
-              name="accessKey"
-              type="password"
-              label={t.accessKey}
-              placeholder={t.passwordPlaceholder}
-              icon={FaKey}
-              required
-              value={password}
-              onChange={(e: React.ChangeEvent<HTMLInputElement>) =>
-                setPassword(e.target.value)
-              }
-            />
-            <div className="mt-sm">
-              <div className="flex justify-between items-center mb-xs">
-                <span className="font-label-md text-[10px] text-outline-variant uppercase">
-                  {t.keyEntropyLevel}
-                </span>
-                <span className="font-code-md text-[10px] text-outline-variant uppercase tracking-tighter">
-                  {Math.round(strength)}%
-                </span>
-              </div>
-              <div className="h-1 w-full bg-surface-container-highest rounded-full overflow-hidden">
-                <div
-                  className={`h-full ${strengthColor} transition-all duration-500`}
-                  style={{ width: `${strength}%` }}
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-lg">
+            <Controller
+              name="password"
+              control={control}
+              render={({ field, fieldState }) => (
+                <SignupPasswordField
+                  error={fieldState.error}
+                  value={field.value}
+                  onChange={field.onChange}
+                  label={t.accessKey}
+                  placeholder={t.passwordPlaceholder}
+                  errorMessage={fieldState.error?.message}
+                  strengthLabel={t.keyEntropyLevel}
                 />
-              </div>
-            </div>
+              )}
+            />
+
+            <Controller
+              name="confirmPassword"
+              control={control}
+              render={({ field, fieldState }) => (
+                <SignupConfirmPasswordField
+                  error={fieldState.error}
+                  value={field.value}
+                  onChange={field.onChange}
+                  label={t.confirmPassword}
+                  placeholder={t.passwordPlaceholder}
+                  errorMessage={fieldState.error?.message}
+                />
+              )}
+            />
           </div>
 
-          <div className="flex items-start gap-sm py-sm">
-            <Checkbox
-              id="terms"
-              label={
-                <>
-                  {t.confirmOwnership}{" "}
-                  <a className="text-solar-orange hover:underline" href="#">
-                    {t.securityProtocol}
-                  </a>
-                </>
-              }
-            />
-          </div>
+          <SignupTerms
+            label={t.confirmOwnership}
+            termsLinkLabel={t.securityProtocol}
+            register={register("terms")}
+          />
 
           <PrimaryButton
-            label={t.initializeVault}
-            icon={FaRocket}
+            label={isSubmitting ? t.signingUp : t.initializeVault}
+            icon={isSubmitting ? undefined : FaRocket}
             iconPosition="right"
+            loading={isSubmitting}
           />
         </form>
 
-        {/* Footer Links */}
-        <div className="mt-xl pt-lg border-t border-outline-variant flex justify-between items-center">
-          <a
-            className="font-code-md text-code-md text-on-surface-variant hover:text-solar-orange transition-colors"
-            href="#"
-          >
-            {t.decryptExisting}
-          </a>
-          <span className="text-outline-muted">|</span>
-          <a
-            className="font-code-md text-code-md text-on-surface-variant hover:text-solar-orange transition-colors"
-            href="#"
-          >
-            {t.systemStatus}
-          </a>
-        </div>
+        <SignupFooter
+          loginLabel={t.decryptExisting}
+          statusLabel={t.systemStatus}
+        />
       </div>
     </section>
   );

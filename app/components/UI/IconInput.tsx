@@ -11,6 +11,7 @@ interface IconInputProps {
   className?: string;
   value?: string;
   onChange?: (e: React.ChangeEvent<HTMLInputElement>) => void;
+  autoComplete?: string;
 }
 
 export default function IconInput({
@@ -24,6 +25,7 @@ export default function IconInput({
   className = "",
   value,
   onChange,
+  autoComplete,
 }: IconInputProps) {
   return (
     <div className={`space-y-sm ${className}`}>
@@ -38,7 +40,7 @@ export default function IconInput({
           <Icon className="w-5 h-5" />
         </div>
         <input
-          className="w-full bg-surface-container-low border border-outline-variant rounded-sm py-3 pl-11 pr-md text-on-surface font-body-md focus:ring-0 focus:border-solar-orange focus:outline-none transition-colors"
+          className="w-full bg-surface-container-low border border-outline-variant rounded-sm py-3 pl-11 pr-md text-on-surface font-body-md focus:ring-0 focus:border-solar-orange focus:outline-2 focus:outline-solar-orange focus:outline-offset-2 transition-colors"
           id={id}
           name={name}
           placeholder={placeholder}
@@ -46,6 +48,7 @@ export default function IconInput({
           type={type}
           value={value}
           onChange={onChange}
+          autoComplete={autoComplete}
         />
       </div>
     </div>
